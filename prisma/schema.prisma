@@ -1,0 +1,261 @@
+// This is your Prisma schema file
+generator client {
+  provider = "prisma-client-js"
+  output   = "/app/generated/prisma-client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Admin Users
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Site Information
+model SiteInfo {
+  id          Int      @id @default(autoincrement())
+  name        String
+  tagline     String
+  description String
+  logo        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Statistics
+model Statistics {
+  id            Int      @id @default(autoincrement())
+  totalBooks    Int
+  totalJournals Int
+  totalEBooks   Int
+  dailyVisitors Int
+  activeMembers Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// Announcements
+model Announcement {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  date      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Library Hours
+model LibraryHour {
+  id        Int      @id @default(autoincrement())
+  day       String
+  time      String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Navigation Menu Items
+model NavigationItem {
+  id        Int      @id @default(autoincrement())
+  title     String
+  icon      String
+  href      String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Committee Members
+model CommitteeMember {
+  id        Int      @id @default(autoincrement())
+  position  String
+  role      String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Committee Functions
+model CommitteeFunction {
+  id        Int      @id @default(autoincrement())
+  content   String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// About Section
+model AboutHistory {
+  id        Int      @id @default(autoincrement())
+  content   String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AboutActivity {
+  id        Int      @id @default(autoincrement())
+  content   String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Staff {
+  id        Int      @id @default(autoincrement())
+  name      String
+  position  String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Facility {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Rules
+model GeneralRule {
+  id        Int      @id @default(autoincrement())
+  content   String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BorrowingRule {
+  id        Int      @id @default(autoincrement())
+  content   String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BookBankRule {
+  id        Int      @id @default(autoincrement())
+  content   String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PracticeRule {
+  id        Int      @id @default(autoincrement())
+  content   String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// E-Resources
+model EResource {
+  id          Int      @id @default(autoincrement())
+  name        String
+  ipRange     String
+  url         String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AccessInstruction {
+  id        Int      @id @default(autoincrement())
+  content   String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Gallery
+model GalleryImage {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  imageUrl    String
+  category    String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Policy
+model PolicyVision {
+  id        Int      @id @default(autoincrement())
+  content   String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PolicyMission {
+  id        Int      @id @default(autoincrement())
+  content   String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PolicyObjective {
+  id        Int      @id @default(autoincrement())
+  content   String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model GeneralPolicy {
+  id        Int      @id @default(autoincrement())
+  content   String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FinePolicy {
+  id        Int      @id @default(autoincrement())
+  content   String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Journals
+model Journal {
+  id         Int      @id @default(autoincrement())
+  name       String
+  type       String // "National" or "International"
+  department String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Department {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Syllabi
+model Syllabus {
+  id         Int      @id @default(autoincrement())
+  department String
+  year       String
+  pdfLink    String
+  level      String // "UG" or "PG"
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

@@ -1,0 +1,69 @@
+# =========================
+# Dependencies
+# =========================
+node_modules/
+
+# =========================
+# Next.js
+# =========================
+.next/
+out/
+dist/
+
+# =========================
+# Prisma
+# =========================
+# Generated Prisma client (safe to ignore)
+prisma/generated/
+
+# Local SQLite databases (DO NOT COMMIT)
+prisma/*.db
+prisma/*.db-journal
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.local
+.env.development
+.env.production
+.env.*.local
+
+# =========================
+# Logs
+# =========================
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+
+# =========================
+# TypeScript
+# =========================
+*.tsbuildinfo
+
+# =========================
+# Testing
+# =========================
+coverage/
+
+# =========================
+# IDE / OS
+# =========================
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# =========================
+# Vercel
+# =========================
+.vercel
+
+# =========================
+# Misc
+# =========================
+*.pem
